@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: blue;
+        }
+
+        nav {
+            width: 80%;
+            margin: 0px auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 60px;
+            position: relative;
+        }
+
+        nav .logo {
+            position: absolute;
+            left: 0%;
+        }
+
+        nav .menus {
+            position: absolute;
+            right: 0%;
+        }
+
+        nav .menus ul {
+            display: flex;
+            align-items: center;
+        }
+
+        nav .menus ul li {
+            margin: 10px;
+            list-style: none;
+
+        }
+
+        nav .menus ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .login {
+            display: flex;
+            background: #000;
+            margin-top: 0px;
+            height: 60px;
+            align-items: center;
+        }
+
+        .login li:nth-child(2) {
+            border-left: 1px solid #fff;
+            padding: 6px;
+            margin-left: 0px;
+
+        }
+
+        .login li:nth-child(1) {
+            margin-right: 0px;
+            padding-right: 6px;
+        }
+
+        .section1 {
+            width: 80%;
+            margin: 0 auto;
+            background: url('iis.png') no-repeat;
+            height: 100vh;
+            background-size: 100%;
+
+        }
+
+        .menu-span {
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            right: 0%;
+        }
+
+        .menu-span span {
+            color: #fff;
+            width: 30px;
+            display: none;
+            background: #000;
+            height: 1px;
+            transition: 300ms linear all;
+        }
+
+        .menu-span span:nth-child(1),
+        .menu-span span:nth-child(3) {
+            width: 20px;
+            margin: 0 auto;
+        }
+
+        .menu-span span:nth-child(2) {
+            margin: 5px 0px;
+            width: 32px;
+        }
+
+        .menu-span:hover span:nth-child(1),
+        .menu-span:hover span:nth-child(3) {
+            width: 30px;
+        }
+
+        @media only screen and (max-width: 850px) {
+            .menu-span span {
+                display: block;
+            }
+
+            .menus {
+                top: 60px;
+            }
+
+            .menus {
+                display: none;
+                transition: opacity 1s ease-out;
+                opacity: 0;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .menus {
+                width: 100%;
+                background: #0072c6;
+                opacity: 0.9;
+            }
+
+            nav .menus ul {
+                flex-flow: column;
+                padding: 5px;
+            }
+
+            nav .menus ul li {
+                width: 100%;
+                text-align: center;
+                border: 1px solid #fff;
+                padding: 10px 0px;
+                margin: 0px 0 4px 0px;
+                border-radius: 5px;
+            }
+
+            .login li:nth-child(2) {
+                padding: 10px 0px;
+            }
+
+            ul .login {
+                width: 100%;
+            }
+
+            ul .login li {
+                margin: 0px 5px !important;
+            }
+
+            nav .menus ul li:hover a,
+            nav .menus ul li:hover {
+                background-color: blue;
+                color: #000;
+                transition: all ease-in-out 0.2s;
+            }
+
+            ul .login li:hover a,
+            ul .login li:hover {
+                background-color: #fff !important;
+                color: #000;
+                transition: all ease-out .5s;
+            }
+        }
+
+        @keyframes animationFadeIn {
+            from {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+                -webkit-transform: none;
+                -o-transform: none;
+            }
+        }
+        @keyframes animationFadeOut {
+            from {
+                opacity: 1;
+                transform: none;
+                -webkit-transform: none;
+                -o-transform: none;
+            }
+
+            to {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="divbox-logo.png" alt="">
+            </div>
+            <div class="menus">
+                <ul>
+                    <li><a href="">Modules</a></li>
+                    <li><a href="">What the flipStem</a></li>
+                    <li><a href="">Why Flinn</a></li>
+                    <li><a href="">Contact</a></li>
+                    <div class="login">
+                        <li><a href="">Login</a></li>
+                        <li><a href="">Register</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div class="menu-span">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <section class="section1">
+
+    </section>
+
+</body>
+<script>
+    var hamBtn = document.querySelector('.menu-span');
+    var menus = document.querySelector('.menus');
+        hamBtn.onclick = function () {
+        if (menus.style.display == 'block') {
+            menus.style.animationName = "animationFadeOut";
+            menus.style.animationDuration = "1s";
+            menus.style.animationFillMode = "backwards";
+            setTimeout(function(){
+                menus.style.display = 'none';
+            },1000)
+        }
+        else {
+            menus.style.display = 'block';
+            menus.style.animationName = "animationFadeIn";
+            menus.style.animationDuration = "1s";
+            menus.style.animationFillMode = "both";
+            
+        }
+    }
+</script>
+
+</html>
